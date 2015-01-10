@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+}
+.header {
+    height: 200px;
+    background-color: aquamarine;
+}
+
+.header h1 {
+    text-align: center;
+    padding-top: 80px;
+}
+
+.content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+}
