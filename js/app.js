@@ -1,5 +1,5 @@
-angular.module('food', [])
-    .controller('OrderController', ['$scope', function ($scope) {
+angular.module('food', ['ngRoute'])
+    .controller('OrderController', ['$scope', '$location', function ($scope, $location) {
         $scope.foodList = [{
             name: "大排饭",
             price: 0.1
@@ -27,9 +27,24 @@ angular.module('food', [])
                 }
             }
             console.log($scope.items);
-            localStorage.cbj = "abc";
 
-            location.pathname = "/OrderPage/orderlist.html";
+            $location.path('/submit');
         };
     }])
-    .controller()
+    .controller('SubmitController', ['$scope', function ($scope) {
+
+    }])
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'partials/food-list.html',
+                controller: 'OrderController'
+            })
+            .when('/submit', {
+                templateUrl: 'partials/food-submit.html',
+                controller: 'SubmitController'
+            })
+            .otherwise({
+                redirectTo: '/'
+            })
+    }])
