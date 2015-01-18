@@ -1,7 +1,7 @@
 html,body {
     margin: 0;
 }
-h1{
+.logo{
     margin: 13px 0 0 0;
 }
 a{
@@ -39,24 +39,28 @@ body{
     top: -30px;
     /*float:right;*/
 }
-
+.pic{
+    width: 210px;
+    height: 140px;
+}
 .food {
     display: block;
-    height: 69px;
+    /*height: 140px;*/
     border-bottom: 1px solid #ebebeb;
+    overflow: hidden;
 }
 .food .description{
     margin-left: 50px;
-    margin-top: 25px;
+    margin-top: 50px;
     font-size:18px;
 }
 .food .choose{
     margin-right:100px;
-    margin-top: 25px;
+    margin-top: 50px;
 }
 .food .price{
     margin-right:20px;
-    margin-top: 25px;
+    margin-top: 50px;
     font-size: 18px;
 }
 
