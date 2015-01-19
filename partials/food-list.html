@@ -3,45 +3,15 @@
                 href="javascript:">其他</a></span>
 </div>
 <div class="foodList">
-    <div class="food" id="item1">
-        <div class="pic fl"><img ng-src="img/大排饭.jpg"/></div>
-        <div class="description fl">大排饭</div>
-        <div class="choose fr"><input type="checkbox" ng-model="item1"/></div>
-        <div class="price fr">￥0.1/份</div>
-    </div>
-    <div class="food" id="item2">
-        <div class="pic fl"><img src="img/鸡排饭.jpg" alt=""/></div>
-        <div class="description fl">鸡排饭</div>
-        <div class="choose fr"><input type="checkbox" ng-model="item2"/></div>
-        <div class="price fr">￥0.1/份</div>
-    </div>
-    <div class="food" id="item3">
-        <div class="pic fl"><img src="img/卤肉饭.jpg" alt=""/></div>
-        <div class="description fl">卤肉饭</div>
-        <div class="choose fr"><input type="checkbox" ng-model="item3"/></div>
-        <div class="price fr">￥0.1/份</div>
-    </div>
-    <div class="food" id="item4">
-        <div class="pic fl"><img src="img/排骨砂锅.jpg" alt=""/></div>
-        <div class="description fl">排骨砂锅</div>
-        <div class="choose fr"><input type="checkbox" ng-model="item4"/></div>
-        <div class="price fr">￥0.1/份</div>
-    </div>
-    <div class="food" id="item5">
-        <div class="pic fl"><img src="img/鳕鱼饭.jpg" alt=""/></div>
-        <div class="description fl">鳕鱼饭</div>
-        <div class="choose fr"><input type="checkbox" ng-model="item5"/></div>
-        <div class="price fr">￥0.1/份</div>
-    </div>
-    <div class="food" id="item6">
-        <div class="pic fl"><img src="img/仔鸡饭.jpg" alt=""/></div>
-        <div class="description fl">仔鸡饭</div>
-        <div class="choose fr"><input type="checkbox" ng-model="item6"/></div>
-        <div class="price fr">￥0.1/份</div>
+    <div class="food" ng-repeat="food in foodList" id="{{food.id}}">
+        <div class="pic fl"><img ng-src="{{food.pic}}"/></div>
+        <div class="description fl">{{food.name}}</div>
+        <div class="choose fr"><input type="checkbox" ng-model="food.checked"/></div>
+        <div class="price fr">￥{{food.price}}/份</div>
     </div>
 </div>
 <div class="submit">
-    <div class="userName">姓名:<input type="text" value=""/></div>
-    <div class="totalPrice">总价格: ￥<span id="totalPrice">0.1</span></div>
-    <div class="confirm"><a class="button" href="" ng-click="submitFood()">确认提交</a></div>
+    <div class="userName">姓名:<input type="text" value="" ng-model="userName"/></div>
+    <!--<div class="totalPrice">总价格: ￥<span id="totalPrice">0.1</span></div>-->
+    <div class="confirm"><a class="button" ng-href="#/submit" ng-click="submitFood()">提交</a></div>
 </div>
