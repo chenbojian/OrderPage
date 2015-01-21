@@ -6,13 +6,9 @@ angular.module('food', ['ngRoute'])
             });
             $scope.userName = orderData.userName;
             $scope.submitFood = function () {
-                var ordered = [];
-                for (var food in $scope.foodList) {
-                    if ($scope.foodList[food].checked) {
-                        ordered.push($scope.foodList[food]);
-                    }
-                }
-                orderData.list = ordered;
+                orderData.list = $scope.foodList.filter(function (item) {
+                    if (item.checked) return true;
+                });
                 orderData.userName = $scope.userName;
             }
         }])
@@ -20,10 +16,11 @@ angular.module('food', ['ngRoute'])
         function ($scope, orderData) {
             $scope.orderList = orderData.list;
             $scope.userName = orderData.userName;
-            $scope.totalPrice=0.0;
-            for (var food in $scope.orderList){
-                $scope.totalPrice += $scope.orderList[food].price;
-            }
+            $scope.totalPrice = $scope.orderList.map(function (item) {
+                return item.price;
+            }).reduce(function (previous, current) {
+                return previous + current;
+            }, 0);
         }])
 
     .config(['$routeProvider', function ($routeProvider) {
@@ -42,7 +39,7 @@ angular.module('food', ['ngRoute'])
     }])
     .factory('orderData', function () {
         return {
-            list: undefined,
+            list: [],
             userName: 'XXX'
         }
     });
