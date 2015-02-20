@@ -1,7 +1,7 @@
 angular.module('food', ['ngRoute'])
     .controller('OrderController', ['$scope', '$http', 'orderData',
         function ($scope, $http, orderData) {
-            $http.get('data/food-list.json').success(function (data) {
+            $http.get('api/foodlist').success(function (data) {
                 $scope.foodList = data;
             });
             $scope.userName = orderData.userName;
