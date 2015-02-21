@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -13,13 +14,16 @@ namespace OrderPage.Controllers
         public HttpResponseMessage GetFoodList()
         {
             var path = HttpContext.Current.Server.MapPath("/data/food-list.json");
-            var foodList= JsonConvert.DeserializeObject(File.ReadAllText(path));
+            var foodList= JsonConvert.DeserializeObject<Food[]>(File.ReadAllText(path));
             return Request.CreateResponse(HttpStatusCode.OK,foodList);
         }
     }
 
     public class Food
     {
-        
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public string Pic { get; set; }
+        public string Id { get; set; }
     }
 }
