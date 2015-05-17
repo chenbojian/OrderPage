@@ -17,6 +17,15 @@ namespace OrderPage.Controllers
             var foodList= JsonConvert.DeserializeObject<Food[]>(File.ReadAllText(path));
             return Request.CreateResponse(HttpStatusCode.OK,foodList);
         }
+
+    }
+
+    public class CbjController : ApiController
+    {
+        public HttpResponseMessage GetCbj()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 
     public class Food
